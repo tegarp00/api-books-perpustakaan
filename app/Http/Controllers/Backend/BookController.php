@@ -14,7 +14,10 @@ class BookController extends Controller
     // jadi fungsi ini untuk menampilkan data buku berdasarkanID yang sudah di gabungkan dgn bbrpa table
     public function getShow($id)
     {
+        // jadi pertama kita membuat query untuk mencari data buku berdasarkan ID
         $books = Buku::query()->where('id', $id)->first();
+
+        // cek jika data tidak ada
         if(!$books) {
             return response()->json([
                 "status" => 404,
@@ -23,11 +26,12 @@ class BookController extends Controller
             ],404);
         }
 
+        // kita query data author dan kategori dengan menyamakan idnya dengan idBuku
         $books['author'] = Author::query()->where('id', $books->id_author)->first();
         $books['kategori'] = Categori::query()->where('id', $books->id_kategori)->first();
 
 
-
+        // handle response jika berhasil
         return response()->json([
             "status" => 200,
             "message" => "list buku berhasil didapatkan",
@@ -62,7 +66,10 @@ class BookController extends Controller
 
     public function index()
     {
+        // kita cari semua data Buku
         $buku = Buku::query()->get();
+
+        // jika tidak ada handle errnya
         if(!$buku) {
             return response()->json([
                 "status" => 404,
@@ -71,6 +78,7 @@ class BookController extends Controller
             ],404);
         }
 
+        // jika berhasil beri response
         return response()->json([
             "status" => 200,
             "message" => "list buku berhasil didapatkan",
@@ -80,6 +88,8 @@ class BookController extends Controller
 
     public function store(Request $request)
     {
+
+        // kita tangkap inputan user(request body) dan disimpan ke variable payload
         $payload = [
             'kode_buku' => $request->input("kode_buku"),
             'judul_buku' => $request->input("judul_buku"),
@@ -89,7 +99,10 @@ class BookController extends Controller
             'id_author' => $request->input("id_author"),
         ];
 
+        // terus kita panggil model Bukunya lalu kita pakai fungsi create yg dimana kita masukkan variabel payloadnya 
         $buku = Buku::query()->create($payload);
+
+        // beri response jika berhasil
         return response()->json([
             "status" => 200,
             "message" => "Buku berhasil ditambahkan",
@@ -99,8 +112,13 @@ class BookController extends Controller
 
     public function update(Request $request, $id)
     {
+        // tangkap semua request user
         $payload = $request->all();
+
+        // cari data Buku berdasarkan id
         $buku = Buku::find($id);
+
+        // handle err jika data tidak ada
         if(!$buku) {
             return response()->json([
                 "status" => 404,
@@ -109,7 +127,10 @@ class BookController extends Controller
             ],404);
         }
 
+        // masukkan tangkapan user ke fungsi update
         $buku->update($payload);
+
+        // handle response jika berhasil diupdate
         return response()->json([
             "status" => 201,
             "message" => "buku berhasil diperbarui",
