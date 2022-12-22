@@ -11,6 +11,7 @@ use App\Models\Author;
 class BookController extends Controller
 {
 
+    // jadi fungsi ini untuk menampilkan data buku berdasarkanID yang sudah di gabungkan dgn bbrpa table
     public function getShow($id)
     {
         $books = Buku::query()->where('id', $id)->first();
@@ -35,6 +36,7 @@ class BookController extends Controller
 
     }
 
+    // jadi fungsi ini untuk menampilkan semua data buku yang sudah di gabungkan dgn bbrpa table
     public function all()
     {
         $books = Buku::query()->get();
@@ -49,47 +51,6 @@ class BookController extends Controller
         })->reject(function ($buku) {
             return empty($buku);
         });
-
-        // $list1 = [];
-        // $list2 = [];
-
-
-        // foreach($buku as $b) {
-        //     foreach($author as $a) {
-        //         if($b->id_author == $a->id) {
-        //             $list1[] = [
-        //                 "kode_buku" => $b->kode_buku,
-        //                 "judul_buku" => $b->judul_buku,
-        //                 "jumlah_halaman" => $b->jumlah_halaman,
-        //                 "tahun_terbit" => $b->tahun_terbit,
-        //                 "id_kategori" => $b->id_kategori,
-        //                 "author" => [
-        //                     "id_author" => $a->id,
-        //                     "nama_author" => $a->nama_author,
-        //                     "profile" => $a->file,
-        //                 ],
-        //             ];
-        //         }
-        //     }
-        // }
-
-        // foreach($list1 as $l1) {
-        //     foreach($kategori as $k) {
-        //         if($l1['id_kategori'] == $k->id) {
-        //             $list2[] = [
-        //                 "kode_buku" => $l1['kode_buku'],
-        //                 "judul_buku" => $l1['judul_buku'],
-        //                 "jumlah_halaman" => $l1['jumlah_halaman'],
-        //                 "tahun_terbit" => $l1['tahun_terbit'],
-        //                 "kategori" => [
-        //                     "id_kategori" => $k->id,
-        //                     "nama_kategori" => $k->nama_kategori
-        //                 ],
-        //                 "author" => $l1['author']
-        //             ];
-        //         }
-        //     }
-        // }
 
         return response()->json([
             "status" => 200,
