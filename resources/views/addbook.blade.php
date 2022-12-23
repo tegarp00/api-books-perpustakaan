@@ -17,10 +17,10 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('home')}}">Home</a>
+                <a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="#">Pricing</a>
+                  <a class="nav-link" href="#">Book</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
@@ -59,7 +59,7 @@
                     </select>
 
                     <span>Author</span>
-                    <select class="form-select" aria-label="Default select example" name="id_kategori">
+                    <select class="form-select" aria-label="Default select example" name="id_author">
                         <option selected>pilih</option>
                         @foreach($authors as $a)
                         <option value="{{$a['id']}}">{{$a['nama_author']}}</option>

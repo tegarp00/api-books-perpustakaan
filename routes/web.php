@@ -21,9 +21,13 @@ use App\Http\Controllers\HomeController;
 // });
 
 // books
+Route::get("/detail/{id}", [HomeController::class, "detail"])->name("detail");
 Route::any("/", [HomeController::class, "index"])->name("home");
 Route::get("/authors/add", [HomeController::class, "createBook"])->name("add");
+Route::get("/delete/{id}", [HomeController::class, "destroy"])->name("destroy");
 
+Route::post("/updateAuthorCategori/{id}", [CreateController::class, "updateAuCate"])->name("updateAuCate");
+Route::post("/updateBook/{id}", [CreateController::class, "updateBook"])->name("updateBook");
 Route::post("/addBook", [CreateController::class, "store"])->name("create");
 Route::post("/addAuthorCategori", [CreateController::class, "authorCategori"])->name("adds");
 Route::get("/updateAuthorCategori/{id}", [HomeController::class, "update"])->name("update");

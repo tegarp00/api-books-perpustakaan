@@ -59,4 +59,22 @@ class HomeController extends Controller
         ]);
     }
 
+    function destroy($id)
+    {
+
+        HttpClient::fetch("DELETE", "http://localhost:8000/api/book/".$id);
+        return redirect()->route('home');
+
+    }
+
+    function detail($id)
+    {
+        $bookId = HttpClient::fetch(
+            "GET",
+            "http://localhost:8000/api/books/".$id
+        );
+
+        return view('detailbook', compact('bookId'));
+    }
+
 }

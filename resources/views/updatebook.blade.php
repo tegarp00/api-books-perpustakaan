@@ -20,7 +20,7 @@
                 <a class="nav-link active" aria-current="page" href="{{route('home')}}">Home</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="#">Pricing</a>
+                  <a class="nav-link" href="#">Book</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
@@ -35,7 +35,7 @@
 <div class="container d-flex">
     <div class="container mt-3">
         <div class="row">
-            <form method="POST" action="{{route('create')}}">
+            <form method="POST" action="{{route('updateBook', $kategoriById['id'])}}">
                 @csrf
                 <div class="col-lg-5">
                     <span>Kode Buku</span>
@@ -59,7 +59,7 @@
                     </select>
 
                     <span>Author</span>
-                    <select class="form-select" aria-label="Default select example" name="id_kategori">
+                    <select class="form-select" aria-label="Default select example" name="id_author">
                         <option>pilih</option>
                         @foreach($authors as $a)
                         <option {{$a['id'] == $kategoriById['id_author'] ? "selected" : ""}} value="{{$a['id']}}">{{$a['nama_author']}}</option>
@@ -73,7 +73,7 @@
 
 <div class="container mt-3">
     <div class="row">
-            <form method="POST" action="{{route('adds')}}" enctype="multipart/form-data">
+            <form method="POST" action="{{route('updateAuCate', $kategoriById['id'])}}" enctype="multipart/form-data">
                 @csrf
                 <div class="col-lg-5">
                     <span>Kategori</span>

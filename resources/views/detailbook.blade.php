@@ -31,34 +31,24 @@
     </nav>
 </div>
 
-    <div class="container mt-5">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>Kode Buku</th>
-                <th>Judul Buku</th>
-                <th>Jumlah Halaman</th>
-                <th>Tahun Terbit</th>
-                <th class="text-center">Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($books as $b)
-            <tr>
-                <td>{{$b['kode_buku']}}</td>
-                <td>{{$b['judul_buku']}}</td>
-                <td>{{$b['jumlah_halaman']}}</td>
-                <td>{{$b['tahun_terbit']}}</td>
-                <td class="d-flex gap-4 justify-content-center">
-                    <a href="{{route('detail', $b['id'])}}"><button class="btn btn-sm btn-primary">Details</button></a>
-                    <a href="{{route('update', $b['id'])}}"><button class="btn btn-sm btn-warning">Update</button></a>
-                    <a href="{{route('destroy', $b['id'])}}"><button class="btn btn-sm btn-danger">Delete</button></a>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-        <a href="{{route('add')}}"><button class="btn btn-sm btn-warning mb-3">Tambah Buku</button></a>
-    </table>
+<div class="container mt-5">
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img style="height: 100% !important;" src="http://localhost:8000/storage/{{$bookId['data']['author']['file']}}" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title mb-4">{{$bookId['data']['judul_buku']}}</h5>
+              <p class="card-text mb-0">Kode Buku : {{$bookId['data']['kode_buku']}}</p>
+              <p class="card-text mb-0">Judul Buku : {{$bookId['data']['judul_buku']}}</p>
+              <p class="card-text mb-0">Jumlah Halaman : {{$bookId['data']['jumlah_halaman']}}</p>
+              <p class="card-text mb-0">Author : {{$bookId['data']['author']['nama_author']}}</p>
+              <p class="card-text mt-5 text-end"><small class="text-muted">Tahun terbit {{$bookId['data']['tahun_terbit']}}</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
 </div>
 
 
