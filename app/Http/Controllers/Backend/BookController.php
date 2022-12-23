@@ -141,6 +141,8 @@ class BookController extends Controller
     public function show($id)
     {
         $buku = Buku::query()->where('id', $id)->first();
+        $buku['categori'] = Categori::query()->where('id', $buku->id_kategori)->first();
+        $buku['author'] = Author::query()->where('id', $buku->id_author)->first();
         if(!$buku) {
             return response()->json([
                 "status" => 404,

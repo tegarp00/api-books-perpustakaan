@@ -29,22 +29,22 @@ Route::get("/books", [BookController::class, 'index']);
 Route::get("/book/{id}", [BookController::class, 'show']);
 
 Route::post("/book", [BookController::class, 'store']);
-Route::put("/book/{id}", [BookController::class, 'update']);
-Route::delete("/book/{id}", [BookController::class, 'destroy']);
+Route::post("/book/{id}", [BookController::class, 'update']);
+Route::post("/book/{id}", [BookController::class, 'destroy']);
 
 // author
-Route::get("/books/authors", [AuthorController::class, 'index']);
-Route::get("/book/author/{id}", [AuthorController::class, 'show']);
+Route::get("/authors", [AuthorController::class, 'index']);
+Route::get("/author/{id}", [AuthorController::class, 'show']);
 
-Route::post("/book/author", [AuthorController::class, 'store']);
-Route::put("/book/author/{id}", [AuthorController::class, 'update']);
-Route::delete("/book/author/{id}", [AuthorController::class, 'destroy']);
+Route::post("/author", [AuthorController::class, 'store']);
+Route::post("/author/{id}", [AuthorController::class, 'update']);
+Route::delete("/author/{id}", [AuthorController::class, 'destroy']);
 
 // categori
-Route::get("/books/categories", [CategoriController::class, 'index']);
-Route::get("/book/categori/{id}", [CategoriController::class, 'show']);
+Route::get("/categories", [CategoriController::class, 'index']);
+Route::get("/categori/{id}", [CategoriController::class, 'show']);
 
-Route::post("/book/categori", [CategoriController::class, 'store']);
-Route::put("/book/categori/{id}", [CategoriController::class, 'update']);
-Route::delete("/book/categori/{id}", [CategoriController::class, 'destroy']);
+Route::post("/categori", [CategoriController::class, 'store']);
+Route::post("/categori/{id}", [CategoriController::class, 'update']);
+Route::delete("/categori/{id}", [CategoriController::class, 'destroy']);
 
